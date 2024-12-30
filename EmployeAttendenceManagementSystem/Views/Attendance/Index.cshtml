@@ -1,0 +1,43 @@
+﻿@model IEnumerable<EmployeAttendenceManagementSystem.Models.Attendance>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h1 class="text-center text-primary">Attendance Record</h1>
+            <a class="btn btn-sm btn-success m-1" asp-controller="Attendance" asp-action="Create"><i class="bi bi-plus-circle-fill"></i> Create</a>
+            <p class="text-center text-success">@TempData["Error"]</p>
+            <table class="table table-bordered">
+                <tr class="text-center">
+                    <th>AttendanceId</th>
+                    <th>EmployeeId</th>
+                    <th>Date</th>
+                    <th>CheckInTime</th>
+                    <th>CheckOutTime</th>
+                    <th>Action</th>
+                </tr>
+                @foreach (var d in Model)
+                {
+                    <tr class="text-center">
+                        <td>@d.AttendanceId</td>
+                        <td>@d.EmployeeId</td>
+                        <td>@d.Date</td>
+                        <td>@d.CheckInTime</td>
+                        <td>@d.CheckOutTime</td>
+                        <td>
+                            <a class="btn btn-sm btn-warning" asp-controller="Attendance" asp-action="Edit"
+                               asp-route-id="@d.AttendanceId"><i class="bi bi-arrow-repeat"></i> Edit</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-sm btn-danger" asp-controller="Attendance asp-action="Delete"
+                               asp-route-id="@d.AttendanceId"><i class="bi bi-trash"></i> Delete</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

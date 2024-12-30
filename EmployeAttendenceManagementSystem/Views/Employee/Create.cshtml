@@ -1,0 +1,39 @@
+﻿@model EmployeAttendenceManagementSystem.Models.Employee;
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="text-center text-primary">Add Employee</h1>
+                    <p class="text-center text-danger">@TempData["message"]</p>
+                </div>
+                <div class="card-body">
+                    <form method="post" asp-action="Create">
+                        <div class="form-group mb-2">
+                            <label asp-for="Name" class="p-2">Name</label>
+                            <input type="text" asp-for="Name" class="form-control" placeholder="Enter Employee Name"/>
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label asp-for="Email" class="p-2">Email</label>
+                            <input type="text" asp-for="Email" class="form-control" placeholder="Enter Your Email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label asp-for="Department" class="p-2">Department</label>
+                            <input type="text" asp-for="Department" class="form-control" placeholder="Enter Your Dept" />
+                            <span asp-validation-for="Department" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-2">
+                            <input type="submit" value="Submit" class="btn btn-md btn-outline-success"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
