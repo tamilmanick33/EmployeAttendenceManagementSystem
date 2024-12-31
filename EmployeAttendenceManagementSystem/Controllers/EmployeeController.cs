@@ -48,7 +48,6 @@ namespace EmployeAttendenceManagementSystem.Controllers
               
             
         }
-      
         public IActionResult Delete(int id)
         {
             var emp = context.Employees.SingleOrDefault(e=>e.EmployeeId==id);
@@ -63,6 +62,7 @@ namespace EmployeAttendenceManagementSystem.Controllers
             var emp = context.Employees.SingleOrDefault(e => e.EmployeeId == id);
             var result = new Employee()
             {
+                EmployeeId=emp.EmployeeId,
                 Name = emp.Name,
                 Email = emp.Email,
                 Department = emp.Department

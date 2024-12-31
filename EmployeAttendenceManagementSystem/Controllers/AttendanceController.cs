@@ -48,11 +48,18 @@ namespace EmployeAttendenceManagementSystem.Controllers
        
         public IActionResult Delete(int id)
         {
-            var emp = context.Attendances.SingleOrDefault(e =>e.EmployeeId == id);
-            context.Attendances.Remove(emp);
-            context.SaveChanges();
-            TempData["Error"] ="Data Deleted!";
-            return RedirectToAction("Index");
+            try
+            {
+                var emp = context.Attendances.SingleOrDefault(e => e.EmployeeId == id);
+                context.Attendances.Remove(emp);
+                context.SaveChanges();
+                TempData["Error"] = "Data Deleted!";
+                return RedirectToAction("Index");
+            }
+              catch(Exception ex)
+            {
+                return View();
+            } 
         }
         [HttpGet]
         public IActionResult Edit(int id)
@@ -60,6 +67,7 @@ namespace EmployeAttendenceManagementSystem.Controllers
             var emp = context.Attendances.SingleOrDefault(e => e.AttendanceId == id);
             var result = new Attendance()
             {
+                AttendanceId=emp.AttendanceId,
                 EmployeeId= emp.EmployeeId,
                 Date=emp.Date,
                 CheckInTime=emp.CheckInTime,
@@ -73,6 +81,7 @@ namespace EmployeAttendenceManagementSystem.Controllers
         {
             var emp = new Attendance()
             {
+                AttendanceId=model.AttendanceId,
                 EmployeeId = model.EmployeeId,
                 Date = model.Date,
                 CheckInTime = model.CheckInTime,

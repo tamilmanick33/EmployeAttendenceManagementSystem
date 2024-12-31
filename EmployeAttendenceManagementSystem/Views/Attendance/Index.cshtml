@@ -17,7 +17,7 @@
                     <th>Date</th>
                     <th>CheckInTime</th>
                     <th>CheckOutTime</th>
-                    <th>Action</th>
+                    <th colspan="2">Action</th>
                 </tr>
                 @foreach (var d in Model)
                 {
@@ -32,7 +32,7 @@
                                asp-route-id="@d.AttendanceId"><i class="bi bi-arrow-repeat"></i> Edit</a>
                         </td>
                         <td>
-                            <a class="btn btn-sm btn-danger" asp-controller="Attendance asp-action="Delete"
+                            <a class="btn btn-sm btn-danger" asp-controller="Attendance" asp-action="Delete"
                                asp-route-id="@d.AttendanceId"><i class="bi bi-trash"></i> Delete</a>
                         </td>
                     </tr>
